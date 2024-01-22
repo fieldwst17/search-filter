@@ -24,7 +24,7 @@ function App() {
               {/* Card */}
               <div className="card">
                 <div className="card-title">
-                  <img src={item.flags} alt={item.name} />
+                  <img src={item.flags.svg} alt={item.flags.alt} />
                 </div>
                 <div className="card-body">
                   <div className="card-desc">
