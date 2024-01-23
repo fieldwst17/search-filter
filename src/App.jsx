@@ -16,23 +16,26 @@ function App() {
       });
   }, []);
 
-  const formatNumber=(num)=> {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-}
+  const formatNumber = (num) => {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  }
 
   const searchCountries = () => {
+
     return countries.filter((item) => {
-      return dataFilter.some((filter) => {
-        const value = item[filter];
+      const commonName = item.name?.common ||  "";
+      const capital = item.capital?.[0] || ""; // capital is an array, take the first element if available
+      const valuesToSearch = [commonName, capital];
+  
+      return valuesToSearch.some((value) => {
         if (value !== undefined && value !== null) {
-          // Check if the value is not undefined or null
-          return String(value).toLowerCase().indexOf(word.toLowerCase()) > -1;
+          return String(value).toLowerCase().includes(word.toLowerCase());
         }
         return false;
       });
     });
   };
-  
+
   return (
     <div className="container">
       <div className="search-container">
@@ -50,6 +53,7 @@ function App() {
         {searchCountries().map((item, index) => {
           return (
             <li key={index}>
+
               {/* Card */}
               <div className="card">
                 <div className="card-title">
@@ -76,6 +80,7 @@ function App() {
                 </div>
               </div>
               {/* Card End */}
+              
             </li>
           );
         })}
