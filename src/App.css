@@ -9,8 +9,24 @@
   max-width: 1140px;
   margin: 0 auto;
 
-  ul,ol{
+  ul,
+  ol {
     list-style: none;
+  }
+
+  & .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 48px 0;
+
+    & .search-input {
+      padding: 1.5rem;
+      width: 30rem;
+      font-size: 18px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
   }
 
   & .row {
@@ -40,7 +56,7 @@
             text-decoration: none;
             margin-top: 8px;
             & span {
-              color: gray;
+              color: rgb(11, 11, 11)
             }
           }
         }
